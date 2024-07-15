@@ -3,15 +3,22 @@
 #include "PlayerManager.h"
 #include <string>
 
+Doodler doodler;
+
 /* Test Framework realization */
 class MyFramework : public Framework {
+
 	PlatformManager platformManager;
 	PlayerManager playerManager;
+	
 	Score scorePoints;
 	bool gameRun;
 	float previousTime = getTickCount();
 
+
 public:
+
+	
 
 	virtual void PreInit(int& width, int& height, bool& fullscreen)
 	{
