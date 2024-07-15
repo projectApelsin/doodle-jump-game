@@ -1,76 +1,56 @@
 #pragma once
 
-
-
 //file paths
+extern const char* DOODLE_RIGHT_PATH;
+extern const char* DOODLE_LEFT_PATH;
+extern const char* DOODLE_TOP_PATH;
+extern const char* DOODLE_TRUNK_PATH;
+extern const char* PLATFORM_BASIC_PATH;
+extern const char* BACKGROUND_PATH;
+extern const char* MONSTER_PATH;
+extern const char* PROJECTILE_PATH;
+extern const char* SPRING_BOOTS_PATH;
+extern const char* SPRING_BOOTS_LEFT_PATH;
+extern const char* JUMP_PAD_PATH;
+extern const char* SCORE_ZERO;
+extern const char* SCORE_ONE;
+extern const char* SCORE_TWO;
+extern const char* SCORE_THREE;
+extern const char* SCORE_FOUR;
+extern const char* SCORE_FIVE;
+extern const char* SCORE_SIX;
+extern const char* SCORE_SEVEN;
+extern const char* SCORE_EIGHT;
+extern const char* SCORE_NINE;
 
-const char* DOODLE_RIGHT_PATH = "data/lik-right@2x.png";
-const char* DOODLE_LEFT_PATH = "data/lik-left@2x.png";
-const char* DOODLE_TOP_PATH = "data/lik-puca@2x.png";
-const char* DOODLE_TRUNK_PATH = "data/lik-njuska@2x.png";
-const char* PLATFORM_BASIC_PATH = "C:/Projects/doodle-jump-game/data/platform_basic.png";
-const char* BACKGROUND_PATH = "data/bck@2x.png";
+//window constants
+extern int WINDOW_WIDTH;
+extern int WINDOW_HEIGHT;
 
-const char* MONSTER_PATH = "data/monster.png";
-
-const char* PROJECTILE_PATH = "data/projectile.png";
-
-enum SpringBootsStatus
-{
-	RightBoots = 7, LeftBoots = 8
-};
-
-const char* SPRING_BOOTS_PATH = "data/spring_boots.png";
-const char* SPRING_BOOTS_LEFT_PATH = "data/spring_boots_left.png";
-
-const char* JUMP_PAD_PATH = "data/jump_pad.png";
-
-
-const char* SCORE_ZERO = "data/0_score.png";
-const char* SCORE_ONE = "data/1_score.png";
-const char* SCORE_TWO = "data/2_score.png";
-const char* SCORE_THREE = "data/3_score.png";
-const char* SCORE_FOUR = "data/4_score.png";
-const char* SCORE_FIVE = "data/5_score.png";
-const char* SCORE_SIX = "data/6_score.png";
-const char* SCORE_SEVEN = "data/7_score.png";
-const char* SCORE_EIGHT = "data/8_score.png";
-const char* SCORE_NINE = "data/9_score.png";
-//window constant
-
-int WINDOW_WIDTH = 600;
-int WINDOW_HEIGHT = 800;
-
-//doodler 
-
-enum DoodleStatus { Right, Left, Top ,Trunk};
-
-const int DOODLER_WIDTH = 90;
-const int DOODLER_HEIGHT = 90;
-float DOODLE_VY = 0.4f;
-float DOODLE_VX = 0.5f;
-float G = 14 / 10000.0f;
-
+//doodler
+enum DoodleStatus { Right, Left, Top, Trunk };
+extern const int DOODLER_WIDTH;
+extern const int DOODLER_HEIGHT;
+extern float DOODLE_VY;
+extern float DOODLE_VX;
+extern float G;
 
 //monster
-
-const int MONSTER_WIDTH = 100;
-const int MONSTER_HEIGHT = 60;
-
-const int PROJECTILE_WIDTH = 15;
-const int PROJECTILE_HEIGHT = 15;
+extern const int MONSTER_WIDTH;
+extern const int MONSTER_HEIGHT;
+extern const int PROJECTILE_WIDTH;
+extern const int PROJECTILE_HEIGHT;
 
 //platform
-const int PLATFORM_WIDTH = 90;
-const int PLATFORM_HEIGHT = 20;
-const int PLATFORM_COLLISION_DISTANCE_WIDTH = 150;
-const int PLATFORM_COLLISION_DISTANCE_HEIGHT = 50;
+extern const int PLATFORM_WIDTH;
+extern const int PLATFORM_HEIGHT;
+extern const int PLATFORM_COLLISION_DISTANCE_WIDTH;
+extern const int PLATFORM_COLLISION_DISTANCE_HEIGHT;
 
 //Boosters
+extern const int JUMP_PAD_WIDTH;
+extern const int JUMP_PAD_HEIGHT;
+extern const int SPRING_BOOTS_WIDTH;
+extern const int SPRING_BOOTS_HEIGHT;
 
-const int JUMP_PAD_WIDTH = 70;
-const int JUMP_PAD_HEIGHT = 20;
-
-const int SPRING_BOOTS_WIDTH = 50;
-const int SPRING_BOOTS_HEIGHT = 50;
-
+enum SpringBootsStatus { RightBoots = 7, LeftBoots = 8 };
