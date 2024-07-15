@@ -57,6 +57,9 @@
     <ClInclude Include="SpringBoots.h">
       <Filter>Файлы заголовков\Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="include\Doodler.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">

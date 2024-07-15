@@ -8,7 +8,7 @@ const char* DOODLE_RIGHT_PATH = "data/lik-right@2x.png";
 const char* DOODLE_LEFT_PATH = "data/lik-left@2x.png";
 const char* DOODLE_TOP_PATH = "data/lik-puca@2x.png";
 const char* DOODLE_TRUNK_PATH = "data/lik-njuska@2x.png";
-const char* PLATFORM_BASIC_PATH = "data/platform_basic.png";
+const char* PLATFORM_BASIC_PATH = "C:/Projects/doodle-jump-game/data/platform_basic.png";
 const char* BACKGROUND_PATH = "data/bck@2x.png";
 
 const char* MONSTER_PATH = "data/monster.png";

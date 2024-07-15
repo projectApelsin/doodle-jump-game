@@ -35,7 +35,7 @@ public:
 
 	virtual bool Init() {
 		
-		platformManager.generatePlatforms(12);
+	platformManager.generatePlatforms(12);
 		playerManager.initializeManager();
 		scorePoints.initializeScoreSprites();
 		
