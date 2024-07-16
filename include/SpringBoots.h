@@ -7,52 +7,21 @@ class SpringBoots : public Entity{
 	bool isSpringBootsSpawn;
 public:
 	bool activeAbility;
-	SpringBoots() 
-		:Entity(Point(-100,-100), SPRING_BOOTS_WIDTH, SPRING_BOOTS_HEIGHT), jumpBoost(2.5), isSpringBootsSpawn(false), activeAbility(false)
-	{
+	SpringBoots();
+	
+	Point& getSpringBootsPosition();
 
-	}
+	Rectangle& getHitBoxSpringBootsPosition();
 
-	Point& getSpringBootsPosition() {
-		return position;
-	}
+	int jumpBooster();
 
-	Rectangle& getHitBoxSpringBootsPosition() {
-		return hitBox;
-	}
+	void spawnSpringBoots();
 
-	int jumpBooster() {
-		return jumpBoost;
-	}
+	bool getIsSpringBootsSpawn();
 
-	void spawnSpringBoots() {
-		isSpringBootsSpawn = true;
-	}
+	void setSpringBootsHitBox(int x, int y);
 
-	bool getIsSpringBootsSpawn() {
-		return isSpringBootsSpawn;
-	}
+	void updateSpringBootsPositionY(int y);
 
-	void setSpringBootsHitBox(int x, int y) {
-		hitBox.x = x;
-		hitBox.y = y;
-		isSpringBootsSpawn = false;
-	}
-
-	void updateSpringBootsPositionY(int y) {
-		hitBox.y += y;
-	}
-
-	bool isDoodlerCollideSpringBoots(Doodler& doodler) {
-		if ((doodler.getHitBoxBottom().x > hitBox.x - 50)
-			&& (doodler.getHitBoxBottom().x < hitBox.x + 50)
-			&& (doodler.getHitBoxBottom().y > hitBox.y - 30)
-			&& (doodler.getHitBoxBottom().y < hitBox.y + 10)) {
-			activeAbility = true;
-			std::cout << "chinaren\n";
-			return true;
-		}
-
-		return false;
-	}
+	bool isDoodlerCollideSpringBoots(Doodler& doodler);
 };
