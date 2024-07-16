@@ -149,6 +149,7 @@
     <ClInclude Include="include\Doodler.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Framework.h" />
+    <ClInclude Include="include\JumpPad.h" />
     <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\PlatformBasic.h" />
     <ClInclude Include="include\PlatformManager.h" />
@@ -157,11 +158,7 @@
     <ClInclude Include="include\Rectangle.h" />
     <ClInclude Include="include\Score.h" />
     <ClInclude Include="include\SpringBoots.h" />
-    <ClInclude Include="JumpPad.h" />
     <ClInclude Include="PlayerManager.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="Score.h" />
-    <ClInclude Include="SpringBoots.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Const.cpp" />

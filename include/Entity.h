@@ -1,18 +1,13 @@
 #pragma once
-
-#include "Framework.h"
 #include "Rectangle.h"
-#include "Const.h"
 #include <iostream>
+#include "Const.h"
 
 class Entity {
 protected:
 	Rectangle hitBox;
 	Point position;
 
-	Entity(Point point, int width, int height) 
-		: hitBox{point,width,height}, position(point)
-	{
-	}
+	Entity(Point point, int width, int height);
 
 };

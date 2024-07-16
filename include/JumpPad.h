@@ -5,45 +5,19 @@ class JumpPad : public Entity {
 
 public:
 	bool isJumpPadSpawn = false;
-	JumpPad()
-		:Entity(Point(-100, -100), JUMP_PAD_WIDTH, JUMP_PAD_HEIGHT)
-	{}
+	JumpPad();
 
-	JumpPad(Point& point, int width, int height) 
-		: Entity(point,width,height)
-	{}
+	JumpPad(Point& point, int width, int height);
 
-	Point& getJumpPadPosition() {
-		return position;
-	}
+	Point& getJumpPadPosition();
 
-	Rectangle& getJumpPadHitBox() {
-		return hitBox;
-	}
+	Rectangle& getJumpPadHitBox();
 
-	void setJumpPadHitBox(int x, int y) {
-		hitBox.x = x;
-		hitBox.y = y;
-		isJumpPadSpawn = false;
-	}
+	void setJumpPadHitBox(int x, int y);
 
-	bool isDoodlerCollideJumpPad(Doodler& doodler) {
-		if ((doodler.getHitBoxBottom().x > hitBox.x - 50)
-			&& (doodler.getHitBoxBottom().x < hitBox.x + 50)
-			&& (doodler.getHitBoxBottom().y > hitBox.y - 30)
-			&& (doodler.getHitBoxBottom().y < hitBox.y + 10)) {
-			return true;
-		}
+	bool isDoodlerCollideJumpPad(Doodler& doodler);
 
-		return false;
-	}
+	void updateJumpPadPositionY(int dy);
 
-	void updateJumpPadPositionY(int dy) {
-		hitBox.y += dy;
-	}
-
-	void spawnJumpPad() {
-		isJumpPadSpawn = true;
-	}
-
+	void spawnJumpPad();
 };

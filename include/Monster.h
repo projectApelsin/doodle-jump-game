@@ -3,90 +3,32 @@
 #include "Entity.h"
 #include "PlatformBasic.h"
 #include "Projectile.h"
+#include "Doodler.h"
 
 class Monster : public Entity {
 private:
 	Rectangle hitBoxTop;
 	bool monsterSpawn = false;
 public:
-	Monster() 
-		: Entity(Point(-100,-100),0,0)
-	{
-		hitBoxTop.x = hitBox.x;
-		hitBoxTop.y = hitBox.y - 70;
-		hitBoxTop.width = hitBox.width;
-		hitBoxTop.height = hitBox.height - 70;
-	}
+	Monster();
 
-	Monster(Point point, int width, int height)
-		: Entity(point, width, height)
-	{
-		hitBox.x = point.x;
-		hitBox.y = point.y;
-		hitBoxTop.x = point.x;
-		hitBoxTop.y = point.y - 70;
-	}
+	Monster(Point point, int width, int height);
 
-	Rectangle& getMonsterHitBox() {
-		return hitBox;
-	}
+	Rectangle& getMonsterHitBox();
 
-	void setMonsterSpawn(bool spawn) {
-		monsterSpawn = spawn;
-	}
+	void setMonsterSpawn(bool spawn);
 
-	void spawnMonster() {
-		monsterSpawn = true;
-	}
+	void spawnMonster();
 
-	bool getMonsterSpawn() {
-		return monsterSpawn;
-	}
+	bool getMonsterSpawn();
 
-	void setMonsterPoint(int x, int y) {
-		hitBox.x = x;
-		hitBox.y = y;
-		hitBoxTop.x = x;
-		hitBoxTop.y = y - 60;
-		monsterSpawn = false;
+	void setMonsterPoint(int x, int y);
 
-	}
+	void setMonsterPositionUpdateY(int dy);
 
-	void setMonsterPositionUpdateY(int dy) {
-		hitBox.y += dy;
-		hitBoxTop.y += dy;
-	}
+	bool isMonsterHitBoxCollideDoodler(Doodler& doodler);
 
-	bool isMonsterHitBoxCollideDoodler(Doodler& doodler) {
+	bool isMonsterHitBoxCollideProjectile(Projectile& projectile);
 
-		if ((doodler.getDoodlerPosition().x > hitBox.x - 60)
-			&& (doodler.getDoodlerPosition().x < hitBox.x + 60)
-			&& (doodler.getDoodlerPosition().y > hitBox.y - 30)
-			&& doodler.getDoodlerPosition().y < hitBox.y + 30) {
-			return true;
-		}
-		return false;
-	}
-
-	bool isMonsterHitBoxCollideProjectile(Projectile& projectile) {
-
-		if ((projectile.getProjectilePosition().x > hitBox.x - 80)
-			&& (projectile.getProjectilePosition().x < hitBox.x + 80)
-			&& (projectile.getProjectilePosition().y > hitBox.y - 40)
-			&& projectile.getProjectilePosition().y < hitBox.y + 20) {
-			return true;
-		}
-		return false;
-	}
-
-	bool isMonsterHitBoxTopCollideDoodler(Doodler& doodler) {
-		if ((doodler.getHitBoxBottom().x > hitBoxTop.x - 50)
-			&& (doodler.getHitBoxBottom().x < hitBoxTop.x + 50)
-			&& (doodler.getHitBoxBottom().y > hitBoxTop.y - 10)
-			&& (doodler.getHitBoxBottom().y < hitBoxTop.y + 20)) {
-			return true;
-		}
-		
-		return false;
-	}
+	bool isMonsterHitBoxTopCollideDoodler(Doodler& doodler);
 };

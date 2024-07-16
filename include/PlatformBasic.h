@@ -1,6 +1,8 @@
 #pragma once
 #include "Framework.h"
 #include "Entity.h"
+#include "Const.h"
+
 class PlatformBasic : public Entity  {
 private:
 	Sprite* platformBasicSprite = createSprite(PLATFORM_BASIC_PATH);
