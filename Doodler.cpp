@@ -70,6 +70,7 @@ void Doodler::leftRightPosition(float& deltaTime, bool& doodlerOnRightHalf) {
 	float vx = DOODLE_VX;
 	if (doodlerOnRightHalf) {
 		vx = vx * 1.5;
+
 	}
 	switch (doodlerStatus)
 	{
