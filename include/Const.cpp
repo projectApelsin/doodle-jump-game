@@ -30,9 +30,9 @@ int WINDOW_HEIGHT = 800;
 //doodler
 const int DOODLER_WIDTH = 90;
 const int DOODLER_HEIGHT = 90;
-float DOODLE_VY = 0.4f;
-float DOODLE_VX = 0.5f;
-float G = 14 / 10000.0f;
+const float DOODLE_VY = 0.4f;
+const float DOODLE_VX = 0.5f;
+const float G = 14 / 10000.0f;
 
 //monster
 const int MONSTER_WIDTH = 100;

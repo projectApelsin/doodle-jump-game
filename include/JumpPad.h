@@ -9,9 +9,9 @@ public:
 
 	JumpPad(Point& point, int width, int height);
 
-	Point& getJumpPadPosition();
+	const Point& getJumpPadPosition() const;
 
-	Rectangle& getJumpPadHitBox();
+	const Rectangle& getJumpPadHitBox() const;
 
 	void setJumpPadHitBox(int x, int y);
 

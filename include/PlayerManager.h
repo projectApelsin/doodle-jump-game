@@ -25,7 +25,7 @@ private:
 	bool gameStart;
 	bool jumpBoost;
 	bool jumpBoostSpring;
-	int screenUpdate = WINDOW_HEIGHT/2;
+	int screenUpdateBorder = WINDOW_HEIGHT/2;
 	unsigned int startTime;
 	float interpolationFactor = 0.28;
 	int boost;
@@ -55,6 +55,16 @@ public:
 	void drawJumpPad();
 
 	void drawSpringBoots();
+
+	void isDoodlerFall(Doodler& doodler);
+
+	void isDoodlerAcrossBorder(Doodler& doodler);
+
+	void doodlerIsUseJumpPad(JumpPad& jumpPad, Doodler& doodler);
+
+	void doodlerIsUseSpringBoots(SpringBoots& springBoots, Doodler& doodler);
+
+	void screenUpdate(Doodler& doodler, PlatformManager& platformManager, float deltaTime, Score& score);
 
 	void updatePosition(bool& pressedRight, bool& pressedLeft, PlatformManager& platformManager, float deltaTime, Score& score);
 

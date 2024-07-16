@@ -8,9 +8,9 @@ private:
 public:
 	Projectile(Point point, int width, int height, float dx, float dy);
 
-	Point& getProjectilePosition();
+	const Point& getProjectilePosition() const;
 
-	Rectangle& getProjectileHitBox();
+	const Rectangle& getProjectileHitBox() const;
 
 	void setProjectilePosition(int x, int y);
 

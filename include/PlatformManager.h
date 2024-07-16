@@ -17,7 +17,6 @@ public:
 
 	void generatePlatforms(int size);
 
-
 	void drawPlatforms();
 
 	bool collides(Rectangle rect1, Rectangle rect2);

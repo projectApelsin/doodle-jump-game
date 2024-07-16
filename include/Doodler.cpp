@@ -50,23 +50,33 @@ void Doodler::setDoodlerPositionY(int y) {
 	hitBoxBottom.y = y + 80;
 }
 
-DoodleStatus& Doodler::getDoodlerStatus() {
+void Doodler::updateHitBoxBottom(int x, int y) {
+	if (position.x != x) position.x += x;
+	if (position.y != y) position.y += y;
+}
+
+void Doodler::setHitBoxBottom(int x, int y) {
+	position.x = x;
+	position.y = y;
+}
+
+ const DoodleStatus& Doodler::getDoodlerStatus() const{
 	return doodlerStatus;
 }
 
-Point& Doodler::getDoodlerPosition() {
+const Point& Doodler::getDoodlerPosition() const{
 	return position;
 }
 
-Rectangle& Doodler::getHitBoxBottom() {
+const Rectangle& Doodler::getHitBoxBottom() const{
 	return hitBoxBottom;
 }
 
-Rectangle& Doodler::getHitBox() {
+const Rectangle& Doodler::getHitBox() const{
 	return hitBox;
 }
 
-void Doodler::leftRightPosition(float& deltaTime, bool& doodlerOnRightHalf) {
+void Doodler::leftRightPosition(float deltaTime, bool doodlerOnRightHalf) {
 	float vx = DOODLE_VX;
 	if (doodlerOnRightHalf) {
 		vx = vx * 1.5;

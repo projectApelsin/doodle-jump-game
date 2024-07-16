@@ -9,11 +9,11 @@ Projectile::Projectile(Point point, int width, int height, float dx, float dy)
 	hitBox.height = height;
 }
 
-Point& Projectile::getProjectilePosition() {
+const Point& Projectile::getProjectilePosition() const {
 	return position;
 }
 
-Rectangle& Projectile::getProjectileHitBox() {
+const Rectangle& Projectile::getProjectileHitBox() const {
 	return hitBox;
 }
 

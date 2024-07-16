@@ -67,6 +67,5 @@ void Score::setScorePoints(int score) {
 }
 
 bool Score::scoreRemainder(int scorePoint) {
-	if (scorePoints % scorePoint == 0) return true;
-	return false;
+	return (scorePoints % scorePoint == 0);
 }

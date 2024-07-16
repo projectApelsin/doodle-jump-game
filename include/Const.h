@@ -31,9 +31,9 @@ extern int WINDOW_HEIGHT;
 enum DoodleStatus { Right, Left, Top, Trunk };
 extern const int DOODLER_WIDTH;
 extern const int DOODLER_HEIGHT;
-extern float DOODLE_VY;
-extern float DOODLE_VX;
-extern float G;
+extern const float DOODLE_VY;
+extern const float DOODLE_VX;
+extern const float G;
 
 //monster
 extern const int MONSTER_WIDTH;

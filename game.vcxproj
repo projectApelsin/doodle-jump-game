@@ -153,28 +153,28 @@
     <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\PlatformBasic.h" />
     <ClInclude Include="include\PlatformManager.h" />
+    <ClInclude Include="include\PlayerManager.h" />
     <ClInclude Include="include\Point.h" />
     <ClInclude Include="include\Projectile.h" />
     <ClInclude Include="include\Rectangle.h" />
     <ClInclude Include="include\Score.h" />
     <ClInclude Include="include\SpringBoots.h" />
-    <ClInclude Include="PlayerManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Const.cpp" />
-    <ClCompile Include="Doodler.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="JumpPad.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="PlatformBasic.cpp" />
-    <ClCompile Include="PlatformManager.cpp" />
-    <ClCompile Include="PlayerManager.cpp" />
-    <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Score.cpp" />
-    <ClCompile Include="SpringBoots.cpp" />
+    <ClCompile Include="include\Const.cpp" />
+    <ClCompile Include="include\Doodler.cpp" />
+    <ClCompile Include="include\Entity.cpp" />
+    <ClCompile Include="include\game.cpp" />
+    <ClCompile Include="include\JumpPad.cpp" />
+    <ClCompile Include="include\Monster.cpp" />
+    <ClCompile Include="include\PlatformBasic.cpp" />
+    <ClCompile Include="include\PlatformManager.cpp" />
+    <ClCompile Include="include\PlayerManager.cpp" />
+    <ClCompile Include="include\Point.cpp" />
+    <ClCompile Include="include\Projectile.cpp" />
+    <ClCompile Include="include\Rectangle.cpp" />
+    <ClCompile Include="include\Score.cpp" />
+    <ClCompile Include="include\SpringBoots.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

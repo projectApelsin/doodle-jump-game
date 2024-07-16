@@ -8,11 +8,11 @@ JumpPad::JumpPad(Point& point, int width, int height)
 	: Entity(point, width, height)
 {}
 
-Point& JumpPad::getJumpPadPosition() {
+const Point& JumpPad::getJumpPadPosition() const{
 	return position;
 }
 
-Rectangle& JumpPad::getJumpPadHitBox() {
+const Rectangle& JumpPad::getJumpPadHitBox() const{
 	return hitBox;
 }
 

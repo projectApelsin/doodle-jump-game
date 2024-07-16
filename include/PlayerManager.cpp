@@ -11,7 +11,7 @@ void PlayerManager::initializeManager() {
 	spritesManager.emplace_back(createSprite(SPRING_BOOTS_LEFT_PATH));
 	spritesManager.emplace_back(createSprite(SPRING_BOOTS_PATH));
 	doodler.initializeDoodler();
-	if (WINDOW_HEIGHT / 2 < 380) screenUpdate = 200;
+	if (WINDOW_HEIGHT / 2 < 380) screenUpdateBorder = 200;
 }
 
 void PlayerManager::doodleShootProjectile(int& x, int& y) {
@@ -35,9 +35,9 @@ void PlayerManager::doodleShootProjectile(int& x, int& y) {
 void PlayerManager::updateProjectilePosition(int speed, int deltaTime) {
 	for (auto& projectile : projectiles) {
 		if (projectile.getProjectilePosition().x > 600) {
-			projectile.getProjectilePosition().x = 0;
+			projectile.setProjectilePosition(0, projectile.getProjectilePosition().y);
 		}
-		else if (projectile.getProjectilePosition().x < 0) projectile.getProjectilePosition().x = 600;
+		else if (projectile.getProjectilePosition().x < 0) projectile.setProjectilePosition(600, projectile.getProjectilePosition().y);
 
 		if (projectile.getProjectilePosition().y < 0) {
 			projectiles.erase(std::remove_if(projectiles.begin(), projectiles.end(), [](Projectile& p) {
@@ -102,47 +102,29 @@ void PlayerManager::drawSpringBoots() {
 	drawSprite(spritesManager[7], springBoots.getHitBoxSpringBootsPosition().x, springBoots.getHitBoxSpringBootsPosition().y);
 }
 
-void PlayerManager::updatePosition(bool& pressedRight, bool& pressedLeft, PlatformManager& platformManager, float deltaTime, Score& score) {
-	if (springBoots.activeAbility) {
-		if (WINDOW_HEIGHT / 2 < 380) {
-			screenUpdate = WINDOW_HEIGHT / 2;
-		}
-	}
-	updateProjectilePosition(0.5, deltaTime);
-	// end if player fall of platform to bottom
+void PlayerManager::isDoodlerFall(Doodler& doodler) {
 	if (doodler.getDoodlerPosition().y > WINDOW_HEIGHT && gameStart) {
 		isGameOver = true;
-		doodler.getDoodlerPosition().y = -100;
+		doodler.setDoodlerPositionY(-100);
 	}
-	// if player on right side player speed increase by 50% look at keyboard input function in framework onKeyPressed
-	if (doodler.getDoodlerPosition().x > WINDOW_WIDTH / 2) doodlerOnRightHalf = true;
-	else doodlerOnRightHalf = false;
+}
 
-	if ((pressedLeft || pressedRight) && isAlive)doodler.leftRightPosition(deltaTime, doodlerOnRightHalf);
+void PlayerManager::isDoodlerAcrossBorder(Doodler& doodler) {
 
-	// if player go aboard right and left screen 
 	if (doodler.getDoodlerPosition().x > WINDOW_WIDTH + 50) {
-		doodler.getDoodlerPosition().x = -50;
-		doodler.getHitBoxBottom().x = -50;
+		doodler.setDoodlerPositionX(-50);
+		doodler.setHitBoxBottom(doodler.getHitBoxBottom().x, -50);
 	}
 	else
 	{
 		if (doodler.getDoodlerPosition().x < -50) {
-			doodler.getDoodlerPosition().x = WINDOW_WIDTH + 50;
-			doodler.getHitBoxBottom().x = WINDOW_WIDTH + 50;
+			doodler.setDoodlerPositionX(WINDOW_WIDTH + 50);
+			doodler.setHitBoxBottom(WINDOW_WIDTH + 50, doodler.getDoodlerPosition().x);
 		}
 	}
-	//check collide doodler kill from top monster
-	if (monster.isMonsterHitBoxTopCollideDoodler(doodler)) {
-		monster.setMonsterPoint(-200, -200);
-		dy = -0.8;
-	}
-	//check collide monster doodler to kill
-	if (monster.isMonsterHitBoxCollideDoodler(doodler)) {
-		isAlive = false;
-		jumpLevel = 1000;
-	}
-	// check using jump pad
+}
+
+void PlayerManager::doodlerIsUseJumpPad(JumpPad& jumpPad, Doodler& doodler) {
 	if (jumpPad.isDoodlerCollideJumpPad(doodler)) {
 		if (dy > 0) {
 			if (doodler.getDoodlerPosition().y < WINDOW_HEIGHT / 2) dy = -0.35 * 3;
@@ -152,7 +134,14 @@ void PlayerManager::updatePosition(bool& pressedRight, bool& pressedLeft, Platfo
 		}
 	}
 	else if (dy > -0.1) jumpBoost = false;
-	//check using spring boots
+}
+
+void PlayerManager::doodlerIsUseSpringBoots(SpringBoots& springBoots, Doodler& doodler) {
+	if (springBoots.activeAbility) {
+		if (WINDOW_HEIGHT / 2 < 380) {
+			screenUpdateBorder = WINDOW_HEIGHT / 2;
+		}
+	}
 	if (springBoots.isDoodlerCollideSpringBoots(doodler)) {
 		startTime = getTickCount();
 		jumpBoostSpring = true;
@@ -167,8 +156,10 @@ void PlayerManager::updatePosition(bool& pressedRight, bool& pressedLeft, Platfo
 		jumpBoostSpring = false;
 		springBoots.activeAbility = false;
 	}
-	// update screen logic
-	if (doodler.getDoodlerPosition().y < screenUpdate) {
+}
+
+void PlayerManager::screenUpdate(Doodler& doodler, PlatformManager& platformManager, float deltaTime, Score& score) {
+	if (doodler.getDoodlerPosition().y < screenUpdateBorder) {
 		dy += G * deltaTime;
 		updateScreenPosition(platformManager, 1, deltaTime, score);
 		if (doodler.getDoodlerPosition().y > jumpLevel - 80 && !jumpBoost && !springBoots.activeAbility) dy = -0.8;
@@ -191,6 +182,39 @@ void PlayerManager::updatePosition(bool& pressedRight, bool& pressedLeft, Platfo
 		}
 		doodler.updateDoodlerPositionY(dy * deltaTime);
 	}
+}
+
+
+
+void PlayerManager::updatePosition(bool& pressedRight, bool& pressedLeft, PlatformManager& platformManager, float deltaTime, Score& score) {
+	
+	updateProjectilePosition(0.5, deltaTime);
+	// end if player fall of platform to bottom
+	isDoodlerFall(doodler);
+	// if player on right side player speed increase by 50% look at keyboard input function in framework onKeyPressed
+	if (doodler.getDoodlerPosition().x > WINDOW_WIDTH / 2) doodlerOnRightHalf = true;
+	else doodlerOnRightHalf = false;
+
+	if ((pressedLeft || pressedRight) && isAlive)doodler.leftRightPosition(deltaTime, doodlerOnRightHalf);
+
+	// if player go aboard right and left screen 
+	isDoodlerAcrossBorder(doodler);
+	//check collide doodler kill from top monster
+	if (monster.isMonsterHitBoxTopCollideDoodler(doodler)) {
+		monster.setMonsterPoint(-200, -200);
+		dy = -0.8;
+	}
+	//check collide monster doodler to kill
+	if (monster.isMonsterHitBoxCollideDoodler(doodler)) {
+		isAlive = false;
+		jumpLevel = 1000;
+	}
+	// check using jump pad
+	doodlerIsUseJumpPad(jumpPad,doodler);
+	//check using spring boots
+	doodlerIsUseSpringBoots(springBoots, doodler);
+	// update screen logic
+	screenUpdate(doodler, platformManager, deltaTime, score);
 	drawMonster();
 	drawJumpPad();
 	drawSpringBoots();

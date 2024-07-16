@@ -25,14 +25,18 @@ public:
 
 	void setDoodlerPositionY(int y);
 
-	DoodleStatus& getDoodlerStatus();
+	void updateHitBoxBottom(int x, int y);
 
-	Point& getDoodlerPosition();
+	void setHitBoxBottom(int x, int y);
 
-	Rectangle& getHitBoxBottom();
+	const DoodleStatus& getDoodlerStatus() const;
 
-	Rectangle& getHitBox();
+	const Point& getDoodlerPosition() const;
 
-	void leftRightPosition(float& deltaTime, bool& doodlerOnRightHalf);
+	const Rectangle& getHitBoxBottom() const;
+
+	const Rectangle& getHitBox() const;
+
+	void leftRightPosition(float deltaTime, bool doodlerOnRightHalf);
 
 };

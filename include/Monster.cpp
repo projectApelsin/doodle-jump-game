@@ -18,7 +18,7 @@ Monster::Monster(Point point, int width, int height)
 	hitBoxTop.y = point.y - 70;
 }
 
-Rectangle& Monster::getMonsterHitBox() {
+const Rectangle& Monster::getMonsterHitBox() const{
 	return hitBox;
 }
 
@@ -48,7 +48,7 @@ void Monster::setMonsterPositionUpdateY(int dy) {
 	hitBoxTop.y += dy;
 }
 
-bool Monster::isMonsterHitBoxCollideDoodler(Doodler& doodler) {
+bool Monster::isMonsterHitBoxCollideDoodler(const Doodler& doodler) {
 
 	if ((doodler.getDoodlerPosition().x > hitBox.x - 60)
 		&& (doodler.getDoodlerPosition().x < hitBox.x + 60)
@@ -59,7 +59,7 @@ bool Monster::isMonsterHitBoxCollideDoodler(Doodler& doodler) {
 	return false;
 }
 
-bool Monster::isMonsterHitBoxCollideProjectile(Projectile& projectile) {
+bool Monster::isMonsterHitBoxCollideProjectile(const Projectile& projectile) {
 
 	if ((projectile.getProjectilePosition().x > hitBox.x - 80)
 		&& (projectile.getProjectilePosition().x < hitBox.x + 80)
@@ -70,7 +70,7 @@ bool Monster::isMonsterHitBoxCollideProjectile(Projectile& projectile) {
 	return false;
 }
 
-bool Monster::isMonsterHitBoxTopCollideDoodler(Doodler& doodler) {
+bool Monster::isMonsterHitBoxTopCollideDoodler(const Doodler& doodler) {
 	if ((doodler.getHitBoxBottom().x > hitBoxTop.x - 50)
 		&& (doodler.getHitBoxBottom().x < hitBoxTop.x + 50)
 		&& (doodler.getHitBoxBottom().y > hitBoxTop.y - 10)

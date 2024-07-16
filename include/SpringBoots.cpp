@@ -4,11 +4,11 @@ SpringBoots::SpringBoots()
 	:Entity(Point(-100, -100), SPRING_BOOTS_WIDTH, SPRING_BOOTS_HEIGHT), jumpBoost(2.5), isSpringBootsSpawn(false), activeAbility(false)
 {}
 
-Point& SpringBoots::getSpringBootsPosition() {
+const Point& SpringBoots::getSpringBootsPosition() const{
 	return position;
 }
 
-Rectangle& SpringBoots::getHitBoxSpringBootsPosition() {
+const Rectangle& SpringBoots::getHitBoxSpringBootsPosition() const{
 	return hitBox;
 }
 
@@ -35,13 +35,12 @@ void SpringBoots::updateSpringBootsPositionY(int y) {
 	hitBox.y += y;
 }
 
-bool SpringBoots::isDoodlerCollideSpringBoots(Doodler& doodler) {
+bool SpringBoots::isDoodlerCollideSpringBoots(const Doodler& doodler) {
 	if ((doodler.getHitBoxBottom().x > hitBox.x - 50)
 		&& (doodler.getHitBoxBottom().x < hitBox.x + 50)
 		&& (doodler.getHitBoxBottom().y > hitBox.y - 30)
 		&& (doodler.getHitBoxBottom().y < hitBox.y + 10)) {
 		activeAbility = true;
-		std::cout << "chinaren\n";
 		return true;
 	}
 

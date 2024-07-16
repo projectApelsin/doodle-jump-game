@@ -12,11 +12,11 @@ public:
 		
 	virtual void drawPlatformBasic();
 
-	Point& getPlatformBasicPosition();
+	const Point& getPlatformBasicPosition() const;
 
 	void setPlatformBasicPosition(int x, int y);
 
 	void setPlatformBasicPositionYUpdate(int y);
 
-	Rectangle& getPlatformBasicHitBox();
+	const Rectangle& getPlatformBasicHitBox() const;
 };

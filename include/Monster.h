@@ -14,7 +14,7 @@ public:
 
 	Monster(Point point, int width, int height);
 
-	Rectangle& getMonsterHitBox();
+	const Rectangle& getMonsterHitBox() const;
 
 	void setMonsterSpawn(bool spawn);
 
@@ -26,9 +26,9 @@ public:
 
 	void setMonsterPositionUpdateY(int dy);
 
-	bool isMonsterHitBoxCollideDoodler(Doodler& doodler);
+	bool isMonsterHitBoxCollideDoodler(const Doodler& doodler);
 
-	bool isMonsterHitBoxCollideProjectile(Projectile& projectile);
+	bool isMonsterHitBoxCollideProjectile(const Projectile& projectile);
 
-	bool isMonsterHitBoxTopCollideDoodler(Doodler& doodler);
+	bool isMonsterHitBoxTopCollideDoodler(const Doodler& doodler);
 };

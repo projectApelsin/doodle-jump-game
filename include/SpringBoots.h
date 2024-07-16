@@ -9,9 +9,9 @@ public:
 	bool activeAbility;
 	SpringBoots();
 	
-	Point& getSpringBootsPosition();
+	const Point& getSpringBootsPosition() const;
 
-	Rectangle& getHitBoxSpringBootsPosition();
+	const Rectangle& getHitBoxSpringBootsPosition() const;
 
 	int jumpBooster();
 
@@ -23,5 +23,5 @@ public:
 
 	void updateSpringBootsPositionY(int y);
 
-	bool isDoodlerCollideSpringBoots(Doodler& doodler);
+	bool isDoodlerCollideSpringBoots(const Doodler& doodler);
 };

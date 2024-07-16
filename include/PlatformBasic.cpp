@@ -10,7 +10,7 @@ void PlatformBasic::drawPlatformBasic() {
 	drawSprite(platformBasicSprite, hitBox.x, hitBox.y);
 }
 
-Point& PlatformBasic::getPlatformBasicPosition() {
+const Point& PlatformBasic::getPlatformBasicPosition() const{
 	return position;
 }
 
@@ -26,6 +26,6 @@ void PlatformBasic::setPlatformBasicPositionYUpdate(int y) {
 	hitBox.y += y;
 }
 
-Rectangle& PlatformBasic::getPlatformBasicHitBox() {
+const Rectangle& PlatformBasic::getPlatformBasicHitBox() const{
 	return hitBox;
 }
